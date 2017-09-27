@@ -38,9 +38,6 @@
 	// The plugin
 	$.fn.bgVideo = function( options ) {
 
-		// @bool iOS
-		var iOS = /iPad|iPhone|iPod/.test(navigator.platform) || /iPad|iPhone|iPod/.test(navigator.userAgent);
-
 		// Settings
 		var settings = $.extend({}, $.fn.bgVideo.defaults, options );
 
@@ -129,15 +126,6 @@
 
 			// Fade in video by setting the transition duration
 			$video.css('transition-duration', el_settings.fadeIn + 'ms');
-
-
-			// Remove on iOS
-			if( iOS ) {
-				// Unset sources to prevent them from continuing to download
-				$video.attr('src', '');
-				$video.find('source').attr('src', '');
-				$video.remove();
-			}
 
 
 			// Mimic background-size: cover with video element
